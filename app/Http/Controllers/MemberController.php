@@ -32,12 +32,12 @@ class MemberController extends Controller
             ->with('success', "Anggota \"{$validated['nama']}\" berhasil ditambahkan.");
     }
 
-    public function show(string $id)
-    {
-        $member = Member::findOrFail($id);
+   public function show(string $id)
+{
+    $member = Member::with(['loans.loanItems.book', 'loans.user'])->findOrFail($id);
 
-        return view('members.show', compact('member'));
-    }
+    return view('members.show', compact('member'));
+}
 
     public function edit(string $id)
     {
