@@ -16,6 +16,8 @@ class LoanController extends Controller
         return LoanResource::collection($loans);
     }
 
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
